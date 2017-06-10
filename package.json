@@ -1,6 +1,6 @@
 {
   "name": "rakufontsgenerator",
-  "version": "1.0.3`",
+  "version": "1.0.6",
   "description": "icon font generator",
   "repository": "https://github.com/lumixraku/fontsgenerator.git",
   "main": "src/index.js",

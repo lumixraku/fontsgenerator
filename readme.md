@@ -2,7 +2,7 @@
 
 CLI usage
 ```
-fontgenerator -f path/entry.js
+rakufontsgenerator -f path/entry.js
 ```
 
 
