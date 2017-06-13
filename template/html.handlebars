@@ -48,23 +48,36 @@
       background-color: #fffdef;
       overflow: auto;
     }
+    .icon_lists{
+      display: flex;
+      width: 100%;
+      flex-wrap: wrap;
+    }
     .icon_lists li{
-      float:left;
-      width: 100px;
+      width: 150px;
       height:180px;
       text-align: center;
+      flex-shrink: 0;
+      -webkit-transition: all 0.25s ease-out 0s;
+      -moz-transition: all 0.25s ease-out 0s;
+      transition: all 0.25s ease-out 0s;
     }
     .icon_lists .icon{
-      font-size: 42px;
+      font-size: 60px;
       line-height: 100px;
       margin: 10px 0;
       color:#333;
-      -webkit-transition: font-size 0.25s ease-out 0s;
-      -moz-transition: font-size 0.25s ease-out 0s;
-      transition: font-size 0.25s ease-out 0s;
     }
-    .icon_lists .icon:hover{
-      font-size: 100px;
+    .icon_lists li:hover{
+      transform: scale(1.5);
+    }
+    .icon_css_lists{
+      font-family: courier new, courier, monospace;
+      padding: 20px;
+      margin: 10px 0;
+      border: solid 1px #e7e1cd;
+      background-color: #fffdef;
+      overflow: auto;
     }
     @font-face {font-family: "{{fontName}}";
       src: url('{{fontName}}.eot?t={{timestamp}}'); /* IE9*/
@@ -95,6 +108,7 @@
       </li>
       {{/each}}
     </ul>
+    <h1>CSS</h1>
     <ul class="icon_css_lists">
       {{#each icons}}
       <li>
@@ -108,11 +122,11 @@
       第一步：使用font-face声明字体
       <pre>
   @font-face {font-family: '{{fontName}}';
-    src: url('{{fontName}}.eot'); /* IE9*/
-    src: url('{{fontName}}.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-    url('{{fontName}}.woff') format('woff'), /* chrome、firefox */
-    url('{{fontName}}.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
-    url('{{fontName}}.svg#iconfont') format('svg'); /* iOS 4.1- */
+    url('{{fontName}}.ttf?t={{timestamp}}') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('{{fontName}}.svg?t={{timestamp}}#iconfont') format('svg'); /* iOS 4.1- */
+    src: url('{{fontName}}.eot?t={{timestamp}}'); /* IE9*/
+    src: url('{{fontName}}.eot?t={{timestamp}}#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('{{fontName}}.woff?t={{timestamp}}') format('woff'), /* chrome、firefox */
   }
       </pre>
       第二步：定义使用iconfont的样式

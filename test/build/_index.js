@@ -43,9 +43,6 @@ describe('buidtest', function () {
         }else{
           done();
         }
-      }).catch(e => {
-        console.log(e)
-        done(new Error(e.toString()));
-      })
+      });
   });
 });
