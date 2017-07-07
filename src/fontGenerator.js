@@ -33,21 +33,29 @@ function generateSvg(icons, svgOpts, options) {
     .on('error', function (err) {
       console.log(err);
     });
+
+  var i = 0;
   _.each(icons, function (icon) {
     try {
-      let glyph;
-      let iconFile = path.join(options.src, icon.file);
-      glyph = fs.createReadStream(iconFile);
+      if (i < 310) {
+        i++;
+        console.log(icon.file)
+        let glyph;
+        let iconFile = path.join(options.src, icon.file);
+        glyph = fs.createReadStream(iconFile);
 
-      glyph.metadata = {
-        name: icon.name,
-        unicode: [String.fromCharCode(icon.codepoint)]
-      };
-      fontStream.write(glyph);
+        glyph.metadata = {
+          name: icon.name,
+          unicode: [String.fromCharCode(icon.codepoint)]
+        };
+        fontStream.write(glyph);
+
+      }
     } catch (e) {
       def.reject(e);
       return false;
     }
+
   });
 
   // Do not forget to end the stream

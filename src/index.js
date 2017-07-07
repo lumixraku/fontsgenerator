@@ -26,15 +26,14 @@ function builder(options) {
   let svgfiles = fs.readdirSync(options.src);
   let prefix = options.prefix || '';
   let iconconf = [];
-  iconconf = svgfiles.map(fname => {
-    return {
-      'name': prefix + fname.slice(0, fname.length - 4),
-      'file': fname  //file 是后面 fontGenerator 读取文件用
-    };
+  svgfiles.forEach(fname => {
+    if(/.*\.svg$/.test(fname)){
+      iconconf.push({
+        'name': prefix + fname.slice(0, fname.length - 4),
+        'file': fname  //file 是后面 fontGenerator 读取文件用
+      });
+    }
   });
-
-
-  // console.log('options::::', _.extend({}, DEFAULT_OPTIONS, options));
 
   options = _.extend({}, DEFAULT_OPTIONS, options, { icons: iconconf });
   options.ascent = 1024 - options.descent;
@@ -62,7 +61,6 @@ function builder(options) {
 }
 
 
-// 判断是否传入 icons 对象，选择排查或补充
 function fillIcons(options) {
   // 如果有 icons 数据，确保数据不为空
 
